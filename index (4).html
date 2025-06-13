@@ -1,0 +1,1292 @@
+<html class="scroll-smooth" lang="id">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Topup Game Manual - Unipin Style
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Poppins:wght@600;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+    font-family: "Poppins", "Inter", sans-serif;
+    background: #0f172a;
+    overflow-x: hidden;
+    color: #e0e7ff;
+   }
+   /* Scrollbar */
+   ::-webkit-scrollbar {
+    width: 8px;
+   }
+   ::-webkit-scrollbar-track {
+    background: #1e293b;
+   }
+   ::-webkit-scrollbar-thumb {
+    background: #3b82f6;
+    border-radius: 4px;
+   }
+   ::-webkit-scrollbar-thumb:hover {
+    background: #2563eb;
+   }
+   /* Nav underline animation */
+   nav a.relative.group span {
+    transition: width 0.3s ease;
+   }
+   nav a.relative.group:hover span {
+    width: 100% !important;
+   }
+   /* Glassmorphism effect */
+   .glass {
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    box-shadow: 0 8px 32px 0 rgba(59, 130, 246, 0.4);
+    color: #e0e7ff;
+   }
+   /* Button gradient */
+   .btn-gradient {
+    background: linear-gradient(90deg, #2563eb 0%, #3b82f6 100%);
+    color: white;
+    transition: background 0.3s ease;
+   }
+   .btn-gradient:hover {
+    background: linear-gradient(90deg, #1e40af 0%, #2563eb 100%);
+   }
+   /* Card hover */
+   .card-hover:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 30px rgba(59, 130, 246, 0.6);
+   }
+   /* Focus ring */
+   .focus-ring:focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+   }
+   /* Animated background with game-themed particles */
+   #animated-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: -1;
+    background: radial-gradient(circle at center, #0f172a 0%, #020617 100%);
+   }
+   .particle {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3b82f6, #60a5fa);
+    box-shadow: 0 0 8px #3b82f6, 0 0 15px #60a5fa;
+    opacity: 0.8;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    will-change: transform, opacity;
+   }
+   /* Different sizes and animation speeds */
+   .particle.small {
+    width: 12px;
+    height: 12px;
+    animation-name: pulseMoveSmall;
+    animation-duration: 6s;
+   }
+   .particle.medium {
+    width: 20px;
+    height: 20px;
+    animation-name: pulseMoveMedium;
+    animation-duration: 9s;
+   }
+   .particle.large {
+    width: 32px;
+    height: 32px;
+    animation-name: pulseMoveLarge;
+    animation-duration: 12s;
+   }
+   /* Animations */
+   @keyframes pulseMoveSmall {
+    0% {
+     transform: translate(0, 0) scale(1);
+     opacity: 0.8;
+    }
+    50% {
+     transform: translate(15px, -10px) scale(1.3);
+     opacity: 0.4;
+    }
+    100% {
+     transform: translate(0, 0) scale(1);
+     opacity: 0.8;
+    }
+   }
+   @keyframes pulseMoveMedium {
+    0% {
+     transform: translate(0, 0) scale(1);
+     opacity: 0.8;
+    }
+    50% {
+     transform: translate(-20px, 15px) scale(1.4);
+     opacity: 0.5;
+    }
+    100% {
+     transform: translate(0, 0) scale(1);
+     opacity: 0.8;
+    }
+   }
+   @keyframes pulseMoveLarge {
+    0% {
+     transform: translate(0, 0) scale(1);
+     opacity: 0.8;
+    }
+    50% {
+     transform: translate(25px, -20px) scale(1.5);
+     opacity: 0.6;
+    }
+    100% {
+     transform: translate(0, 0) scale(1);
+     opacity: 0.8;
+    }
+   }
+   /* Floating game icons */
+   .floating-icon {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    opacity: 0.15;
+    filter: drop-shadow(0 0 6px #3b82f6);
+    animation: floatIcon 10s ease-in-out infinite alternate;
+    will-change: transform, opacity;
+   }
+   .floating-icon:nth-child(1) {
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+   }
+   .floating-icon:nth-child(2) {
+    top: 40%;
+    left: 80%;
+    animation-delay: 3s;
+   }
+   .floating-icon:nth-child(3) {
+    top: 70%;
+    left: 30%;
+    animation-delay: 6s;
+   }
+   .floating-icon:nth-child(4) {
+    top: 85%;
+    left: 60%;
+    animation-delay: 9s;
+   }
+   @keyframes floatIcon {
+    0% {
+     transform: translateY(0) translateX(0) rotate(0deg);
+     opacity: 0.15;
+    }
+    50% {
+     transform: translateY(-15px) translateX(10px) rotate(15deg);
+     opacity: 0.3;
+    }
+    100% {
+     transform: translateY(0) translateX(0) rotate(0deg);
+     opacity: 0.15;
+    }
+   }
+   /* Slider styles */
+   .slider-container {
+    overflow: hidden;
+    border-radius: 2rem;
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.5);
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+   }
+   .slider-wrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    will-change: transform;
+   }
+   .slide {
+    min-width: 100%;
+    user-select: none;
+   }
+   .slide img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1.91 / 1;
+    object-fit: contain;
+    border-radius: 1rem;
+   }
+   .slider-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    gap: 1rem;
+   }
+   .slider-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: #3b82f6;
+    opacity: 0.5;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+   }
+   .slider-dot.active {
+    opacity: 1;
+    box-shadow: 0 0 8px #3b82f6;
+   }
+   /* Testimonial slider styles with small 1:1 images and enlarge on click */
+   #testimonial-section {
+    max-width: 7xl;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+   }
+   #testimonial-section h2 {
+    font-size: 3rem; /* text-5xl */
+    font-weight: 800; /* font-extrabold */
+    color: #60a5fa; /* text-blue-400 */
+    margin-bottom: 4rem; /* mb-16 */
+    text-align: center;
+    letter-spacing: -0.025em; /* tracking-tight */
+    text-shadow: 0 1px 2px rgba(59, 130, 246, 0.7);
+   }
+   .testimonial-slider {
+    display: flex;
+    gap: 2.5rem; /* gap-10 */
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding-bottom: 0.5rem;
+   }
+   .testimonial-slider::-webkit-scrollbar {
+    height: 8px;
+   }
+   .testimonial-slider::-webkit-scrollbar-track {
+    background: #1e293b;
+   }
+   .testimonial-slider::-webkit-scrollbar-thumb {
+    background: #3b82f6;
+    border-radius: 4px;
+   }
+   .testimonial-slider::-webkit-scrollbar-thumb:hover {
+    background: #2563eb;
+   }
+   .testimonial-item {
+    flex: 0 0 auto;
+    width: 96px;
+    height: 96px;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+    position: relative;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.7);
+    background: rgba(15, 23, 42, 0.75);
+   }
+   .testimonial-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 1.5rem;
+    user-select: none;
+   }
+   .testimonial-item.selected {
+    width: 320px;
+    height: 320px;
+    border-color: #3b82f6;
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.9);
+    flex-shrink: 0;
+    z-index: 20;
+    position: relative;
+   }
+   .testimonial-item.selected img {
+    border-radius: 2rem;
+   }
+   .testimonial-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(15, 23, 42, 0.85);
+    color: #e0e7ff;
+    padding: 1rem 1.25rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    max-height: 120px;
+    overflow-y: auto;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    user-select: text;
+   }
+   .testimonial-item.selected .testimonial-content {
+    opacity: 1;
+   }
+   @media (min-width: 768px) {
+    #testimonial-section {
+     padding-left: 4rem;
+     padding-right: 4rem;
+    }
+   }
+  </style>
+ </head>
+ <body class="min-h-screen flex flex-col relative">
+  <!-- Animated background -->
+  <div aria-hidden="true" id="animated-bg">
+   <!-- Particles -->
+   <div class="particle small" style="top: 10%; left: 15%; animation-delay: 0s">
+   </div>
+   <div class="particle medium" style="top: 25%; left: 40%; animation-delay: 2s">
+   </div>
+   <div class="particle large" style="top: 50%; left: 70%; animation-delay: 4s">
+   </div>
+   <div class="particle small" style="top: 75%; left: 20%; animation-delay: 6s">
+   </div>
+   <div class="particle medium" style="top: 85%; left: 60%; animation-delay: 8s">
+   </div>
+   <!-- Floating game icons -->
+   <img alt="Mobile Legends game icon floating" class="floating-icon" height="48" src="https://i.ibb.co/fVTCh4yR/images-14.jpg" style="top: 20%; left: 10%" width="48"/>
+   <img alt="Free Fire game icon floating" class="floating-icon" height="48" src="https://i.ibb.co/Ndd6KKGH/unnamed.png" style="top: 40%; left: 80%" width="48"/>
+   <img alt="Pubg game icon floating" class="floating-icon" height="48" src="https://i.ibb.co/jv1VSmnp/images-17.jpg" style="top: 70%; left: 30%" width="48"/>
+   <img alt="Genshin Impact game icon floating" class="floating-icon" height="48" src="https://i.ibb.co/Lz24bD77/images-12.jpg" style="top: 85%; left: 60%" width="48"/>
+  </div>
+  <!-- Header -->
+  <header class="glass sticky top-0 z-50 border-b border-blue-600 shadow-lg" role="banner">
+   <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 flex items-center justify-between h-20">
+    <a aria-label="Homepage TopupGame" class="flex items-center space-x-4" href="#">
+     <img alt="Logo Unipin style, letter U in blue circle" class="w-14 h-14 rounded-full shadow-lg" height="56" src="https://i.ibb.co/1SMjwyf/1000056042-removebg-preview.png" width="56"/>
+     <span class="text-4xl font-extrabold text-blue-400 tracking-wide select-none drop-shadow-lg">
+      FORTUNPOINT 
+     </span>
+    </a>
+    <nav aria-label="Primary navigation" class="hidden md:flex space-x-12 text-blue-300 font-semibold text-lg tracking-wide">
+     <a class="relative group hover:text-blue-400 transition focus-ring" href="#games">
+      Game
+      <span class="absolute left-0 -bottom-1 w-0 h-1 bg-gradient-to-r from-blue-400 to-blue-600 rounded-full">
+      </span>
+     </a>
+     <a class="relative group hover:text-blue-400 transition focus-ring" href="#cara-bayar" id="menu-cara-bayar">
+      Cara Bayar
+      <span class="absolute left-0 -bottom-1 w-0 h-1 bg-gradient-to-r from-blue-400 to-blue-600 rounded-full">
+      </span>
+     </a>
+     <a class="relative group hover:text-blue-400 transition focus-ring" href="#kontak">
+      Kontak
+      <span class="absolute left-0 -bottom-1 w-0 h-1 bg-gradient-to-r from-blue-400 to-blue-600 rounded-full">
+      </span>
+     </a>
+    </nav>
+    <button aria-label="Toggle menu" class="md:hidden text-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400" id="menu-btn">
+     <i class="fas fa-bars fa-lg">
+     </i>
+    </button>
+   </div>
+   <nav aria-label="Mobile menu" class="md:hidden glass border-t border-blue-600 shadow-lg hidden" id="mobile-menu">
+    <a class="block px-6 py-5 text-blue-300 font-semibold hover:bg-blue-900 transition focus-ring" href="#games">
+     Game
+    </a>
+    <a class="block px-6 py-5 text-blue-300 font-semibold hover:bg-blue-900 transition focus-ring" href="#cara-bayar" id="menu-cara-bayar-mobile">
+     Cara Bayar
+    </a>
+    <a class="block px-6 py-5 text-blue-300 font-semibold hover:bg-blue-900 transition focus-ring" href="#kontak">
+     Kontak
+    </a>
+   </nav>
+  </header>
+  <!-- Hero with image slider -->
+  <section class="relative py-20 px-6 sm:px-16 md:px-24 w-full">
+   <div class="slider-container">
+    <div class="slider-wrapper" id="slider-wrapper">
+     <div class="slide">
+      <img alt="Blue glowing abstract shapes with game icons and light effects" src="https://storage.googleapis.com/a1aa/image/9d8cc45b-2aef-4f09-594e-edeb83185f76.jpg"/>
+     </div>
+     <div class="slide">
+      <img alt="Fast and secure manual topup process illustration with blue theme" src="https://storage.googleapis.com/a1aa/image/d83cba4f-5abd-4e98-2d35-a0bd6263ddec.jpg"/>
+     </div>
+     <div class="slide">
+      <img alt="Best price voucher and diamond offer with blue glowing background" src="https://storage.googleapis.com/a1aa/image/d28e2d55-9760-4806-8994-42b8c3f6d48a.jpg"/>
+     </div>
+    </div>
+    <div class="slider-controls" id="slider-controls">
+     <span class="slider-dot active" data-index="0">
+     </span>
+     <span class="slider-dot" data-index="1">
+     </span>
+     <span class="slider-dot" data-index="2">
+     </span>
+    </div>
+   </div>
+  </section>
+  <!-- Games Section -->
+  <section aria-label="Pilih Game untuk Topup" class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 py-20" id="games">
+   <h2 class="text-5xl font-extrabold text-blue-300 mb-16 text-center tracking-tight drop-shadow-sm">
+    Pilih Game untuk Topup
+   </h2>
+   <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-10 max-w-6xl mx-auto">
+    <button aria-label="Pilih Mobile Legends" class="game-card glass rounded-3xl p-8 flex flex-col items-center cursor-pointer transition-transform duration-300 card-hover focus-ring" data-game="Mobile Legends" type="button">
+     <img alt="Logo Mobile Legends game icon, stylized sword and shield with blue and gold colors" class="w-28 h-28 mb-5 rounded-2xl shadow-md" height="112" src="https://i.ibb.co/fVTCh4yR/images-14.jpg" width="112"/>
+     <span class="font-semibold text-white text-center text-xl tracking-wide select-none">
+      Mobile Legends
+     </span>
+    </button>
+    <button aria-label="Pilih Free Fire" class="game-card glass rounded-3xl p-8 flex flex-col items-center cursor-pointer transition-transform duration-300 card-hover focus-ring" data-game="Free Fire" type="button">
+     <img alt="Logo Free Fire game icon, stylized flame with orange and red colors" class="w-28 h-28 mb-5 rounded-2xl shadow-md" height="112" src="https://i.ibb.co/Ndd6KKGH/unnamed.png" width="112"/>
+     <span class="font-semibold text-white text-center text-xl tracking-wide select-none">
+      Free Fire
+     </span>
+    </button>
+    <button aria-label="Pilih PUBG Mobile" class="game-card glass rounded-3xl p-8 flex flex-col items-center cursor-pointer transition-transform duration-300 card-hover focus-ring" data-game="PUBG Mobile" type="button">
+     <img alt="Logo PUBG Mobile game icon, stylized helmet with camo pattern" class="w-28 h-28 mb-5 rounded-2xl shadow-md" height="112" src="https://i.ibb.co/jv1VSmnp/images-17.jpg" width="112"/>
+     <span class="font-semibold text-white text-center text-xl tracking-wide select-none">
+      PUBG Mobile
+     </span>
+    </button>
+    <button aria-label="Pilih Valorant" class="game-card glass rounded-3xl p-8 flex flex-col items-center cursor-pointer transition-transform duration-300 card-hover focus-ring" data-game="Valorant" type="button">
+     <img alt="Logo Valorant game icon, stylized letter V in red and black" class="w-28 h-28 mb-5 rounded-2xl shadow-md" height="112" src="https://i.ibb.co/W40Ph1fG/unnamed-1.png" width="112"/>
+     <span class="font-semibold text-white text-center text-xl tracking-wide select-none">
+      Honor Of Kings
+     </span>
+    </button>
+    <button aria-label="Pilih Genshin Impact" class="game-card glass rounded-3xl p-8 flex flex-col items-center cursor-pointer transition-transform duration-300 card-hover focus-ring" data-game="Genshin Impact" type="button">
+     <img alt="Logo Genshin Impact game icon, stylized star and wings in white and blue" class="w-28 h-28 mb-5 rounded-2xl shadow-md" height="112" src="https://i.ibb.co/Lz24bD77/images-12.jpg" width="112"/>
+     <span class="font-semibold text-white text-center text-xl tracking-wide select-none">
+      Genshin Impact
+     </span>
+    </button>
+    <button aria-label="Pilih Call of Duty Mobile" class="game-card glass rounded-3xl p-8 flex flex-col items-center cursor-pointer transition-transform duration-300 card-hover focus-ring" data-game="Call of Duty Mobile" type="button">
+     <img alt="Logo Call of Duty Mobile game icon, stylized soldier helmet in black and gray" class="w-28 h-28 mb-5 rounded-2xl shadow-md" height="112" src="https://i.ibb.co/QvXyPQdG/images-21.jpg" width="112"/>
+     <span class="font-semibold text-white text-center text-xl tracking-wide select-none">
+      Call of Duty Mobile
+     </span>
+    </button>
+    <button aria-label="Pilih Among Us" class="game-card glass rounded-3xl p-8 flex flex-col items-center cursor-pointer transition-transform duration-300 card-hover focus-ring" data-game="Among Us" type="button">
+     <img alt="Logo Among Us game icon, stylized crewmate character in red" class="w-28 h-28 mb-5 rounded-2xl shadow-md" height="112" src="https://i.ibb.co/tT32ysM3/unnamed-2.png" width="112"/>
+     <span class="font-semibold text-white text-center text-xl tracking-wide select-none">
+      Blood Strike
+     </span>
+    </button>
+    <button aria-label="Pilih Minecraft" class="game-card glass rounded-3xl p-8 flex flex-col items-center cursor-pointer transition-transform duration-300 card-hover focus-ring" data-game="Minecraft" type="button">
+     <img alt="Logo Minecraft game icon, stylized grass block pixel art" class="w-28 h-28 mb-5 rounded-2xl shadow-md" height="112" src="https://i.ibb.co/4ZVVZhC6/images-34.jpg" width="112"/>
+     <span class="font-semibold text-white text-center text-xl tracking-wide select-none">
+      Garena Undawn
+     </span>
+    </button>
+    <button aria-label="Pilih Clash of Clans" class="game-card glass rounded-3xl p-8 flex flex-col items-center cursor-pointer transition-transform duration-300 card-hover focus-ring" data-game="Clash of Clans" type="button">
+     <img alt="Logo Clash of Clans game icon, stylized barbarian face with yellow hair" class="w-28 h-28 mb-5 rounded-2xl shadow-md" height="112" src="https://i.ibb.co/9HvqhyMY/unnamed.webp" width="112"/>
+     <span class="font-semibold text-white text-center text-xl tracking-wide select-none">
+      Eggy Party
+     </span>
+    </button>
+    <button aria-label="Pilih Roblox" class="game-card glass rounded-3xl p-8 flex flex-col items-center cursor-pointer transition-transform duration-300 card-hover focus-ring" data-game="Roblox" type="button">
+     <img alt="Logo Roblox game icon, stylized letter R in red and black" class="w-28 h-28 mb-5 rounded-2xl shadow-md" height="112" src="https://i.ibb.co/DDn5pLpH/images-35.jpg" width="112"/>
+     <span class="font-semibold text-white text-center text-xl tracking-wide select-none">
+      Sausage Man
+     </span>
+    </button>
+   </div>
+   <!-- Premium Subscription Title -->
+   <h2 class="text-5xl font-extrabold text-blue-300 mt-20 mb-16 text-center tracking-tight drop-shadow-sm">
+    Berlangganan Premium
+   </h2>
+   <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-10 max-w-6xl mx-auto">
+    <button aria-label="Pilih Bstation" class="game-card glass rounded-3xl p-8 flex flex-col items-center cursor-pointer transition-transform duration-300 card-hover focus-ring" data-game="Bstation" type="button">
+     <img alt="Logo Bstation icon, stylized letter B in blue and white" class="w-28 h-28 mb-5 rounded-2xl shadow-md" height="112" src="https://i.ibb.co/nqYZTJHJ/images-36.jpg" width="112"/>
+     <span class="font-semibold text-white text-center text-xl tracking-wide select-none">
+      Bstation
+     </span>
+    </button>
+    <button aria-label="Pilih Netflix" class="game-card glass rounded-3xl p-8 flex flex-col items-center cursor-pointer transition-transform duration-300 card-hover focus-ring" data-game="Netflix" type="button">
+     <img alt="Logo Netflix icon, stylized letter N in red on black background" class="w-28 h-28 mb-5 rounded-2xl shadow-md" height="112" src="https://i.ibb.co/Y4bh32Y0/images-4.png" width="112"/>
+     <span class="font-semibold text-white text-center text-xl tracking-wide select-none">
+      Netflix
+     </span>
+    </button>
+    <button aria-label="Pilih Vidio" class="game-card glass rounded-3xl p-8 flex flex-col items-center cursor-pointer transition-transform duration-300 card-hover focus-ring" data-game="Vidio" type="button">
+     <img alt="Logo Vidio icon, stylized letter V in orange and white" class="w-28 h-28 mb-5 rounded-2xl shadow-md" height="112" src="https://i.ibb.co/DfQq6Csg/images-5.png" width="112"/>
+     <span class="font-semibold text-white text-center text-xl tracking-wide select-none">
+      Vidio
+     </span>
+    </button>
+    <button aria-label="Pilih Viu" class="game-card glass rounded-3xl p-8 flex flex-col items-center cursor-pointer transition-transform duration-300 card-hover focus-ring" data-game="Viu" type="button">
+     <img alt="Logo Viu icon, stylized letters VIU in purple and white" class="w-28 h-28 mb-5 rounded-2xl shadow-md" height="112" src="https://i.ibb.co/RTMYXqdr/images-6.png" width="112"/>
+     <span class="font-semibold text-white text-center text-xl tracking-wide select-none">
+      Viu
+     </span>
+    </button>
+    <button aria-label="Pilih Lita" class="game-card glass rounded-3xl p-8 flex flex-col items-center cursor-pointer transition-transform duration-300 card-hover focus-ring" data-game="Lita" type="button">
+     <img alt="Logo Lita icon, stylized letter L in teal and white" class="w-28 h-28 mb-5 rounded-2xl shadow-md" height="112" src="https://i.ibb.co/5hJjPzg6/images-7.png" width="112"/>
+     <span class="font-semibold text-white text-center text-xl tracking-wide select-none">
+      Lita
+     </span>
+    </button>
+   </div>
+   <!-- Game Voucher Title -->
+   <h2 class="text-5xl font-extrabold text-blue-300 mt-20 mb-16 text-center tracking-tight drop-shadow-sm">
+    Voucher Game
+   </h2>
+   <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-10 max-w-6xl mx-auto">
+    <button aria-label="Pilih Mobile Legends Voucher" class="game-card glass rounded-3xl p-8 flex flex-col items-center cursor-pointer transition-transform duration-300 card-hover focus-ring" data-game="Mobile Legends Voucher" type="button">
+     <img alt="Logo Mobile Legends voucher icon, stylized diamond with blue and gold colors" class="w-28 h-28 mb-5 rounded-2xl shadow-md" height="112" src="https://i.ibb.co/4RPfc5N7/google-play-logo-brandlogos-net-kuk1d.png" width="112"/>
+     <span class="font-semibold text-white text-center text-xl tracking-wide select-none">
+      Google Play Voucher 
+     </span>
+    </button>
+    <button aria-label="Pilih Free Fire Voucher" class="game-card glass rounded-3xl p-8 flex flex-col items-center cursor-pointer transition-transform duration-300 card-hover focus-ring" data-game="Free Fire Voucher" type="button">
+     <img alt="Logo Free Fire voucher icon, stylized flame with orange and red colors" class="w-28 h-28 mb-5 rounded-2xl shadow-md" height="112" src="https://i.ibb.co/kgnwRPCz/3270c3be76f8734637a133bf2972081f.jpg" width="112"/>
+     <span class="font-semibold text-white text-center text-xl tracking-wide select-none">
+      Garena Shells Voucher 
+     </span>
+    </button>
+   </div>
+  </section>
+  <!-- Testimonial Slider Section -->
+  <section aria-label="Testimoni Pelanggan" id="testimonial-section">
+   <h2>
+    Testimoni Pelanggan
+   </h2>
+   <div class="testimonial-slider" role="list">
+    <div aria-label="Testimoni dari Andi" class="testimonial-item focus-ring" role="listitem" tabindex="0">
+     <img alt="Foto profil Andi, pria muda dengan latar belakang biru gelap dan senyum ramah" height="96" src="https://storage.googleapis.com/a1aa/image/860fc41f-9a11-4ac5-7c31-0c2695d86541.jpg" width="96"/>
+     <div class="testimonial-content">
+      "Pelayanan cepat dan mudah! Topup diamond Mobile Legends saya langsung masuk tanpa masalah. Terima kasih TopupGame!"
+     </div>
+    </div>
+    <div aria-label="Testimoni dari Sari" class="testimonial-item focus-ring" role="listitem" tabindex="0">
+     <img alt="Foto profil Sari, wanita muda dengan latar belakang biru gelap dan ekspresi puas" height="96" src="https://storage.googleapis.com/a1aa/image/66f3776f-0190-4fd0-f163-99fec92aa7bc.jpg" width="96"/>
+     <div class="testimonial-content">
+      "Metode pembayaran lengkap dan prosesnya sangat transparan. Sangat direkomendasikan untuk topup game favorit!"
+     </div>
+    </div>
+    <div aria-label="Testimoni dari Budi" class="testimonial-item focus-ring" role="listitem" tabindex="0">
+     <img alt="Foto profil Budi, pria dewasa dengan latar belakang biru gelap dan senyum puas" height="96" src="https://storage.googleapis.com/a1aa/image/20fe19e5-9b3f-44e2-b891-dabbcc24fe45.jpg" width="96"/>
+     <div class="testimonial-content">
+      "Harga voucher sangat bersaing dan customer service-nya responsif. Saya selalu pakai TopupGame untuk topup Free Fire."
+     </div>
+    </div>
+    <div aria-label="Testimoni dari Rina" class="testimonial-item focus-ring" role="listitem" tabindex="0">
+     <img alt="Foto profil Rina, wanita dewasa dengan latar belakang biru gelap dan ekspresi bahagia" height="96" src="https://storage.googleapis.com/a1aa/image/4c09643d-15e4-49b4-1ecc-8da6f10dd2f0.jpg" width="96"/>
+     <div class="testimonial-content">
+      "Sangat mudah digunakan, dan saya suka tampilan websitenya yang keren dan modern. Terima kasih!"
+     </div>
+    </div>
+    <div aria-label="Testimoni dari Dedi" class="testimonial-item focus-ring" role="listitem" tabindex="0">
+     <img alt="Foto profil Dedi, pria muda dengan latar belakang biru gelap dan ekspresi puas" height="96" src="https://storage.googleapis.com/a1aa/image/8b88a3e9-4915-4d5b-0671-d5f4ff163d04.jpg" width="96"/>
+     <div class="testimonial-content">
+      "Proses topup manualnya cepat dan aman. Saya puas dengan layanan TopupGame."
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- Diamond Selection Section (hidden initially) -->
+  <section aria-label="Pilih Nominal Diamond" class="max-w-5xl mx-auto glass rounded-4xl p-12 my-20 hidden shadow-lg" id="diamond-selection">
+   <h2 class="text-4xl font-extrabold text-blue-300 mb-12 text-center tracking-tight drop-shadow-sm">
+    Pilih Nominal Diamond -
+    <span id="diamond-game-name">
+    </span>
+   </h2>
+   <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-12 max-w-5xl mx-auto" id="diamond-options-container">
+   </div>
+   <div class="mt-16 text-center">
+    <button aria-label="Kembali ke Pilihan Game" class="bg-blue-900 text-blue-300 font-semibold px-12 py-4 rounded-3xl shadow-md hover:bg-blue-800 transition focus-ring" id="back-to-games" type="button">
+     Kembali ke Pilihan Game
+    </button>
+   </div>
+  </section>
+  <!-- Topup Manual Form Section (hidden initially) -->
+  <section aria-label="Form Topup Manual" class="max-w-3xl mx-auto glass rounded-4xl p-12 my-20 hidden shadow-lg" id="topup-manual">
+   <h2 class="text-4xl font-extrabold text-blue-300 mb-12 text-center tracking-tight drop-shadow-sm">
+    Form Topup Manual -
+    <span id="form-game-name">
+    </span>
+   </h2>
+   <form autocomplete="off" class="space-y-10" id="topup-form" novalidate="">
+    <div>
+     <label class="block text-blue-300 font-semibold mb-4 text-lg" for="nominal-display">
+      Nominal Topup
+     </label>
+     <input class="w-full border border-blue-600 rounded-2xl px-6 py-5 bg-blue-900 cursor-not-allowed text-lg font-semibold text-blue-300 shadow-inner" id="nominal-display" name="nominalDisplay" readonly="" type="text"/>
+     <input id="nominal-value" name="nominalValue" type="hidden"/>
+    </div>
+    <div>
+     <label class="block text-blue-300 font-semibold mb-4 text-lg" for="game-id">
+      Masukkan ID Game / Username
+     </label>
+     <input class="w-full border border-blue-600 rounded-2xl px-6 py-5 focus:outline-none focus:ring-4 focus:ring-blue-400 focus:border-blue-400 text-lg shadow-sm bg-blue-900 text-blue-200 placeholder-blue-400" id="game-id" name="gameId" placeholder="Contoh: 123456789 atau username" required="" type="text"/>
+     <p class="mt-2 text-sm text-blue-400 italic" id="game-id-info">
+     </p>
+    </div>
+    <div>
+     <label class="block text-blue-300 font-semibold mb-4 text-lg" for="payment-method">
+      Pilih Metode Pembayaran
+     </label>
+     <select class="w-full border border-blue-600 rounded-2xl px-6 py-5 focus:outline-none focus:ring-4 focus:ring-blue-400 focus:border-blue-400 text-lg shadow-sm bg-blue-900 text-blue-200" id="payment-method" name="paymentMethod" required="">
+      <option disabled="" selected="" value="">
+       Pilih metode pembayaran
+      </option>
+      <option value="dana">
+       DANA
+      </option>
+      <option value="qris">
+       QRIS
+      </option>
+      <option value="bri">
+       BRI
+      </option>
+     </select>
+    </div>
+    <div class="text-center text-blue-300 font-semibold text-xl mt-8" id="payment-info">
+    </div>
+    <div class="flex justify-center mt-8" id="payment-image-container">
+    </div>
+    <div>
+     <label class="block text-blue-300 font-semibold mb-4 text-lg" for="payment-number">
+      Nomor Pembayaran (contoh: nomor rekening atau nomor e-wallet)
+     </label>
+     <input class="w-full border border-blue-600 rounded-2xl px-6 py-5 focus:outline-none focus:ring-4 focus:ring-blue-400 focus:border-blue-400 text-lg shadow-sm bg-blue-900 text-blue-200 placeholder-blue-400" id="payment-number" name="paymentNumber" placeholder="Masukkan nomor pembayaran" required="" type="text"/>
+    </div>
+    <div class="text-center">
+     <button aria-label="Proses Topup" class="btn-gradient font-bold px-16 py-5 rounded-3xl shadow-lg hover:shadow-2xl transition focus-ring tracking-wide" type="submit">
+      Proses Topup
+     </button>
+    </div>
+   </form>
+   <p aria-live="polite" class="mt-8 text-center text-base font-semibold text-blue-300" id="form-message" role="alert">
+   </p>
+   <div class="mt-10 text-center">
+    <button aria-label="Kembali ke Pilihan Nominal" class="text-blue-400 underline font-semibold hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 rounded" id="back-to-diamond" type="button">
+     Kembali ke Pilihan Nominal
+    </button>
+   </div>
+  </section>
+  <!-- Cara Bayar Section (hidden initially) -->
+  <section aria-label="Cara Bayar Manual" class="mt-28 max-w-4xl mx-auto glass rounded-4xl p-16 shadow-lg hidden" id="cara-bayar">
+   <h2 class="text-4xl font-extrabold text-blue-300 mb-12 text-center tracking-tight drop-shadow-sm">
+    Cara Bayar Manual
+   </h2>
+   <ol class="list-decimal list-inside space-y-8 text-blue-300 text-xl leading-relaxed tracking-wide">
+    <li>
+     Pilih game dan nominal topup yang ingin kamu beli pada form di atas.
+    </li>
+    <li>
+     Masukkan ID game atau username yang benar agar diamond masuk ke akun kamu.
+    </li>
+    <li>
+     Pilih metode pembayaran yang kamu inginkan, seperti Bank Transfer, OVO,
+     GoPay, DANA, ShopeePay, atau LinkAja.
+    </li>
+    <li>
+     Lakukan pembayaran sesuai nominal yang tertera ke nomor pembayaran yang
+     kamu masukkan.
+    </li>
+    <li>
+     Setelah melakukan pembayaran, simpan bukti pembayaran dan kirimkan bukti
+     tersebut ke kontak kami di bawah.
+    </li>
+    <li>
+     Tim kami akan memproses topup secara manual dan mengirimkan diamond ke
+     akun kamu dalam waktu 15-30 menit.
+    </li>
+    <li>
+     Jika ada kendala, silakan hubungi kami melalui kontak yang tersedia.
+    </li>
+   </ol>
+  </section>
+  <!-- Kontak Section -->
+  <section aria-label="Kontak Kami" class="mt-28 max-w-3xl mx-auto glass rounded-4xl p-16 text-center shadow-lg" id="kontak">
+   <h2 class="text-4xl font-extrabold text-blue-300 mb-12 tracking-tight drop-shadow-sm">
+    Kontak Kami
+   </h2>
+   <p class="text-blue-300 mb-12 text-lg font-light tracking-wide">
+    Jika ada pertanyaan atau kendala, silakan hubungi kami melalui:
+   </p>
+   <div class="flex flex-col sm:flex-row justify-center gap-16 text-blue-300 text-2xl font-semibold">
+    <a aria-label="Email support@topupgame.com" class="flex items-center justify-center gap-5 hover:text-blue-400 transition focus-ring" href="mailto:support@topupgame.com">
+     <i class="fas fa-envelope fa-lg">
+     </i>
+     support@topupgame.com
+    </a>
+    <a aria-label="Telepon +62 812-3456-7890" class="flex items-center justify-center gap-5 hover:text-blue-400 transition focus-ring" href="tel:+6281234567890">
+     <i class="fas fa-phone fa-lg">
+     </i>
+     +62 812-3456-7890
+    </a>
+   </div>
+   <div class="mt-16 flex justify-center space-x-14 text-blue-300 text-4xl">
+    <a aria-label="Facebook" class="hover:text-blue-400 transition focus-ring" href="https://www.facebook.com/topupgame" rel="noopener noreferrer" target="_blank">
+     <i class="fab fa-facebook-square">
+     </i>
+    </a>
+    <a aria-label="Instagram" class="hover:text-pink-500 transition focus-ring" href="https://www.instagram.com/topupgame" rel="noopener noreferrer" target="_blank">
+     <i class="fab fa-instagram">
+     </i>
+    </a>
+    <a aria-label="Twitter" class="hover:text-blue-500 transition focus-ring" href="https://twitter.com/topupgame" rel="noopener noreferrer" target="_blank">
+     <i class="fab fa-twitter-square">
+     </i>
+    </a>
+    <a aria-label="WhatsApp" class="hover:text-green-500 transition focus-ring" href="https://wa.me/6281234567890" rel="noopener noreferrer" target="_blank">
+     <i class="fab fa-whatsapp-square">
+     </i>
+    </a>
+   </div>
+  </section>
+  <!-- Footer -->
+  <footer class="bg-[#0f172a] border-t border-blue-600 py-10 mt-28">
+   <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 text-center text-blue-400 text-base select-none tracking-wide">
+    © 2024 TopupGame. All rights reserved.
+   </div>
+  </footer>
+  <script>
+   // Mobile menu toggle
+   const menuBtn = document.getElementById("menu-btn");
+   const mobileMenu = document.getElementById("mobile-menu");
+
+   menuBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+   });
+
+   // Elements
+   const gameCards = document.querySelectorAll(".game-card");
+   const diamondSection = document.getElementById("diamond-selection");
+   const diamondGameName = document.getElementById("diamond-game-name");
+   const diamondOptionsContainer = document.getElementById(
+    "diamond-options-container"
+   );
+   const topupFormSection = document.getElementById("topup-manual");
+   const formGameName = document.getElementById("form-game-name");
+   const nominalDisplay = document.getElementById("nominal-display");
+   const nominalValueInput = document.getElementById("nominal-value");
+   const backToGamesBtn = document.getElementById("back-to-games");
+   const backToDiamondBtn = document.getElementById("back-to-diamond");
+   const form = document.getElementById("topup-form");
+   const formMessage = document.getElementById("form-message");
+   const gamesSection = document.getElementById("games");
+   const gameIdInput = document.getElementById("game-id");
+   const gameIdInfo = document.getElementById("game-id-info");
+   const paymentMethodSelect = document.getElementById("payment-method");
+   const paymentInfoDiv = document.getElementById("payment-info");
+   const paymentImageContainer = document.getElementById("payment-image-container");
+   const paymentNumberInput = document.getElementById("payment-number");
+   const caraBayarSection = document.getElementById("cara-bayar");
+   const kontakSection = document.getElementById("kontak");
+
+   let selectedGame = "";
+   let selectedNominal = "";
+
+   // Game ID placeholder/info per game
+   const gameIdPlaceholders = {
+    "Mobile Legends": "Contoh: 123456789 atau username Mobile Legends",
+    "Free Fire": "Contoh: ID Free Fire (angka) atau username",
+    "PUBG Mobile": "Contoh: ID PUBG Mobile (angka)",
+    Valorant: "Contoh: Username Valorant",
+    "Genshin Impact": "Contoh: UID Genshin Impact (angka)",
+    "Call of Duty Mobile": "Contoh: Username Call of Duty Mobile",
+    "Among Us": "Contoh: Username Among Us",
+    Minecraft: "Contoh: Username Minecraft",
+    "Clash of Clans": "Contoh: Player Tag Clash of Clans",
+    Roblox: "Contoh: Username Roblox",
+    Bstation: "Contoh: Username Bstation",
+    Netflix: "Contoh: Email atau Username Netflix",
+    Vidio: "Contoh: Username Vidio",
+    Viu: "Contoh: Username Viu",
+    Lita: "Contoh: Username Lita",
+    "Mobile Legends Voucher": "Contoh: Kode voucher Mobile Legends",
+    "Free Fire Voucher": "Contoh: Kode voucher Free Fire",
+    "PUBG Mobile Voucher": "Contoh: Kode voucher PUBG Mobile",
+    "Valorant Voucher": "Contoh: Kode voucher Valorant",
+    "Genshin Impact Voucher": "Contoh: Kode voucher Genshin Impact",
+   };
+
+   // Diamond options per game (nominal, value, image, alt)
+   const diamondOptionsData = {
+    "Mobile Legends": [
+     {
+      nominal: 5,
+      value: 3600,
+      img: "https://storage.googleapis.com/a1aa/image/b0c9de10-6651-4e46-b943-767e2d6ffd89.jpg",
+      alt: "Icon of 5 diamonds, shiny blue diamond gem with sparkles",
+     },
+     {
+      nominal: 12,
+      value: 5371,
+      img: "https://storage.googleapis.com/a1aa/image/ed20a821-e062-454a-e2fa-a31a3c9239a1.jpg",
+      alt: "Icon of 12 diamonds, shiny blue diamond gem with sparkles",
+     },
+     {
+      nominal: 18,
+      value: 6954,
+      img: "https://storage.googleapis.com/a1aa/image/05bda0bd-2631-4836-b200-83c602cc9627.jpg",
+      alt: "Icon of 18 diamonds, shiny blue diamond gem with sparkles",
+     },
+     {
+      nominal: 36,
+      value: 11815,
+      img: "https://storage.googleapis.com/a1aa/image/84cbbf4b-4c17-4345-5bc3-d6199d03af6e.jpg",
+      alt: "Icon of 36 diamonds, shiny blue diamond gem with sparkles",
+     },
+     {
+      nominal: 74,
+      value: 21400,
+      img: "https://storage.googleapis.com/a1aa/image/3e51c485-5ed8-4035-a5c7-fcc4648178eb.jpg",
+      alt: "Icon of 74 diamonds, shiny blue diamond gem with sparkles",
+     },
+    ],
+    "Free Fire": [
+     {
+      nominal: 10,
+      value: 7000,
+      img: "https://storage.googleapis.com/a1aa/image/b0c9de10-6651-4e46-b943-767e2d6ffd89.jpg",
+      alt: "Icon of 10 diamonds, shiny blue diamond gem with sparkles",
+     },
+     {
+      nominal: 25,
+      value: 16000,
+      img: "https://storage.googleapis.com/a1aa/image/ed20a821-e062-454a-e2fa-a31a3c9239a1.jpg",
+      alt: "Icon of 25 diamonds, shiny blue diamond gem with sparkles",
+     },
+     {
+      nominal: 50,
+      value: 30000,
+      img: "https://storage.googleapis.com/a1aa/image/05bda0bd-2631-4836-b200-83c602cc9627.jpg",
+      alt: "Icon of 50 diamonds, shiny blue diamond gem with sparkles",
+     },
+     {
+      nominal: 75,
+      value: 44000,
+      img: "https://storage.googleapis.com/a1aa/image/84cbbf4b-4c17-4345-5bc3-d6199d03af6e.jpg",
+      alt: "Icon of 75 diamonds, shiny blue diamond gem with sparkles",
+     },
+     {
+      nominal: 100,
+      value: 57000,
+      img: "https://storage.googleapis.com/a1aa/image/3e51c485-5ed8-4035-a5c7-fcc4648178eb.jpg",
+      alt: "Icon of 100 diamonds, shiny blue diamond gem with sparkles",
+     },
+    ],
+    "PUBG Mobile": [
+     {
+      nominal: 60,
+      value: 10000,
+      img: "https://storage.googleapis.com/a1aa/image/b0c9de10-6651-4e46-b943-767e2d6ffd89.jpg",
+      alt: "Icon of 60 diamonds, shiny blue diamond gem with sparkles",
+     },
+     {
+      nominal: 125,
+      value: 20000,
+      img: "https://storage.googleapis.com/a1aa/image/ed20a821-e062-454a-e2fa-a31a3c9239a1.jpg",
+      alt: "Icon of 125 diamonds, shiny blue diamond gem with sparkles",
+     },
+     {
+      nominal: 250,
+      value: 38000,
+      img: "https://storage.googleapis.com/a1aa/image/05bda0bd-2631-4836-b200-83c602cc9627.jpg",
+      alt: "Icon of 250 diamonds, shiny blue diamond gem with sparkles",
+     },
+     {
+      nominal: 500,
+      value: 72000,
+      img: "https://storage.googleapis.com/a1aa/image/84cbbf4b-4c17-4345-5bc3-d6199d03af6e.jpg",
+      alt: "Icon of 500 diamonds, shiny blue diamond gem with sparkles",
+     },
+     {
+      nominal: 1000,
+      value: 140000,
+      img: "https://storage.googleapis.com/a1aa/image/3e51c485-5ed8-4035-a5c7-fcc4648178eb.jpg",
+      alt: "Icon of 1000 diamonds, shiny blue diamond gem with sparkles",
+     },
+    ],
+    Valorant: [
+     {
+      nominal: 100,
+      value: 15000,
+      img: "https://storage.googleapis.com/a1aa/image/b0c9de10-6651-4e46-b943-767e2d6ffd89.jpg",
+      alt: "Icon of 100 diamonds, shiny blue diamond gem with sparkles",
+     },
+     {
+      nominal: 300,
+      value: 40000,
+      img: "https://storage.googleapis.com/a1aa/image/ed20a821-e062-454a-e2fa-a31a3c9239a1.jpg",
+      alt: "Icon of 300 diamonds, shiny blue diamond gem with sparkles",
+     },
+     {
+      nominal: 500,
+      value: 65000,
+      img: "https://storage.googleapis.com/a1aa/image/05bda0bd-2631-4836-b200-83c602cc9627.jpg",
+      alt: "Icon of 500 diamonds, shiny blue diamond gem with sparkles",
+     },
+     {
+      nominal: 1000,
+      value: 120000,
+      img: "https://storage.googleapis.com/a1aa/image/84cbbf4b-4c17-4345-5bc3-d6199d03af6e.jpg",
+      alt: "Icon of 1000 diamonds, shiny blue diamond gem with sparkles",
+     },
+     {
+      nominal: 1500,
+      value: 170000,
+      img: "https://storage.googleapis.com/a1aa/image/3e51c485-5ed8-4035-a5c7-fcc4648178eb.jpg",
+      alt: "Icon of 1500 diamonds, shiny blue diamond gem with sparkles",
+     },
+    ],
+    "Genshin Impact": [
+     {
+      nominal: 60,
+      value: 9000,
+      img: "https://storage.googleapis.com/a1aa/image/b0c9de10-6651-4e46-b943-767e2d6ffd89.jpg",
+      alt: "Icon of 60 diamonds, shiny blue diamond gem with sparkles",
+     },
+     {
+      nominal: 300,
+      value: 40000,
+      img: "https://storage.googleapis.com/a1aa/image/ed20a821-e062-454a-e2fa-a31a3c9239a1.jpg",
+      alt: "Icon of 300 diamonds, shiny blue diamond gem with sparkles",
+     },
+     {
+      nominal: 600,
+      value: 75000,
+      img: "https://storage.googleapis.com/a1aa/image/05bda0bd-2631-4836-b200-83c602cc9627.jpg",
+      alt: "Icon of 600 diamonds, shiny blue diamond gem with sparkles",
+     },
+     {
+      nominal: 1200,
+      value: 140000,
+      img: "https://storage.googleapis.com/a1aa/image/84cbbf4b-4c17-4345-5bc3-d6199d03af6e.jpg",
+      alt: "Icon of 1200 diamonds, shiny blue diamond gem with sparkles",
+     },
+     {
+      nominal: 2400,
+      value: 270000,
+      img: "https://storage.googleapis.com/a1aa/image/3e51c485-5ed8-4035-a5c7-fcc4648178eb.jpg",
+      alt: "Icon of 2400 diamonds, shiny blue diamond gem with sparkles",
+     },
+    ],
+   };
+
+   // Show diamond selection on game click
+   gameCards.forEach((card) => {
+    card.addEventListener("click", () => {
+     selectedGame = card.getAttribute("data-game");
+     diamondGameName.textContent = selectedGame;
+
+     // Clear previous diamond options
+     diamondOptionsContainer.innerHTML = "";
+
+     // Get diamond options for selected game
+     const options = diamondOptionsData[selectedGame] || [];
+
+     // Create diamond option buttons dynamically
+     options.forEach((opt) => {
+      const btn = document.createElement("button");
+      btn.setAttribute("aria-label", `Pilih ${opt.nominal} Diamond`);
+      btn.className =
+       "diamond-option border border-blue-600 rounded-4xl p-10 flex flex-col items-center cursor-pointer hover:border-blue-400 transition focus:outline-none focus:ring-4 focus:ring-blue-400 shadow-md hover:shadow-lg focus-ring";
+      btn.setAttribute("data-nominal", opt.nominal);
+      btn.setAttribute("data-value", opt.value);
+      btn.type = "button";
+
+      const img = document.createElement("img");
+      img.src = opt.img;
+      img.alt = opt.alt;
+      img.className = "w-full h-auto mb-5 rounded-2xl shadow-md max-h-36 object-contain";
+
+      const spanNominal = document.createElement("span");
+      spanNominal.className = "font-semibold text-blue-300 text-xl tracking-wide";
+      spanNominal.textContent = `${opt.nominal} ${
+       selectedGame.match(/Voucher$/) ? "Voucher" : "💎"
+      }`;
+
+      const spanPrice = document.createElement("span");
+      spanPrice.className = "text-blue-400 mt-3 text-lg";
+      spanPrice.textContent = `Rp ${opt.value.toLocaleString("id-ID")}`;
+
+      btn.appendChild(img);
+      btn.appendChild(spanNominal);
+      btn.appendChild(spanPrice);
+
+      diamondOptionsContainer.appendChild(btn);
+
+      // Add click event for diamond option
+      btn.addEventListener("click", () => {
+       selectedNominal = btn.getAttribute("data-nominal");
+       const nominalValue = btn.getAttribute("data-value");
+       // Set form values
+       formGameName.textContent = selectedGame;
+       nominalDisplay.value = selectedNominal + (selectedGame.match(/Voucher$/) ? " Voucher" : " Diamond");
+       nominalValueInput.value = nominalValue;
+       // Set game ID placeholder/info
+       gameIdInput.placeholder =
+        gameIdPlaceholders[selectedGame] || "Masukkan ID Game / Username";
+       gameIdInfo.textContent = gameIdPlaceholders[selectedGame] || "";
+       // Reset payment method and info
+       paymentMethodSelect.value = "";
+       paymentInfoDiv.textContent = "";
+       paymentImageContainer.innerHTML = "";
+       paymentNumberInput.value = "";
+       paymentNumberInput.readOnly = false;
+       // Hide diamond selection, show form
+       diamondSection.classList.add("hidden");
+       topupFormSection.classList.remove("hidden");
+       topupFormSection.scrollIntoView({ behavior: "smooth" });
+      });
+     });
+
+     // Hide games, form, show diamond selection
+     gamesSection.classList.add("hidden");
+     topupFormSection.classList.add("hidden");
+     diamondSection.classList.remove("hidden");
+     diamondSection.scrollIntoView({ behavior: "smooth" });
+    });
+   });
+
+   // Back buttons
+   backToGamesBtn.addEventListener("click", () => {
+    diamondSection.classList.add("hidden");
+    topupFormSection.classList.add("hidden");
+    gamesSection.classList.remove("hidden");
+    gamesSection.scrollIntoView({ behavior: "smooth" });
+   });
+
+   backToDiamondBtn.addEventListener("click", () => {
+    topupFormSection.classList.add("hidden");
+    diamondSection.classList.remove("hidden");
+    diamondSection.scrollIntoView({ behavior: "smooth" });
+   });
+
+   // Payment method change handler
+   paymentMethodSelect.addEventListener("change", () => {
+    const method = paymentMethodSelect.value;
+    paymentInfoDiv.textContent = "";
+    paymentImageContainer.innerHTML = "";
+    paymentNumberInput.value = "";
+    paymentNumberInput.readOnly = false;
+    if (method === "dana") {
+     paymentInfoDiv.textContent = "Nomor DANA: 085752366720";
+     paymentNumberInput.value = "085752366720";
+     paymentNumberInput.readOnly = true;
+    } else if (method === "qris") {
+     paymentInfoDiv.textContent = "Scan QRIS berikut untuk pembayaran:";
+     const img = document.createElement("img");
+     img.src = "https://placehold.co/200x200?text=QRIS+Code+Placeholder";
+     img.alt = "QRIS payment code, black and white QR code square";
+     img.className = "mx-auto rounded-xl shadow-lg";
+     paymentImageContainer.appendChild(img);
+     paymentNumberInput.value = "";
+     paymentNumberInput.readOnly = true;
+    } else if (method === "bri") {
+     paymentInfoDiv.textContent =
+      "Nomor Rekening BRI: 1234-5678-9012-3456 a.n. TopupGame";
+     paymentNumberInput.value = "1234567890123456";
+     paymentNumberInput.readOnly = true;
+    } else {
+     paymentNumberInput.value = "";
+     paymentNumberInput.readOnly = false;
+    }
+   });
+
+   // Form submission simulation with WhatsApp message
+   form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    if (!form.checkValidity()) {
+     formMessage.textContent = "Mohon lengkapi semua data dengan benar.";
+     formMessage.className =
+      "mt-6 text-center text-base font-semibold text-red-600";
+     return;
+    }
+
+    // Prepare data
+    const game = selectedGame;
+    const nominal = nominalDisplay.value;
+    const gameId = gameIdInput.value.trim();
+    const paymentMethod =
+     paymentMethodSelect.options[paymentMethodSelect.selectedIndex].text;
+    const paymentNumber = paymentNumberInput.value.trim();
+
+    // Compose WhatsApp message text
+    let message = `Halo Admin TopupGame,%0A%0ASaya ingin melakukan topup manual dengan detail berikut:%0A- Game: ${encodeURIComponent(
+     game
+    )}%0A- Nominal: ${encodeURIComponent(
+     nominal
+    )}%0A- ID Game / Username: ${encodeURIComponent(
+     gameId
+    )}%0A- Metode Pembayaran: ${encodeURIComponent(
+     paymentMethod
+    )}%0A- Nomor Pembayaran: ${encodeURIComponent(paymentNumber)}%0A%0AMohon diproses ya. Terima kasih!`;
+
+    // WhatsApp API URL
+    const waNumber = "6285752366720";
+    const waUrl = `https://wa.me/${waNumber}?text=${message}`;
+
+    formMessage.textContent = "Mengalihkan ke WhatsApp untuk mengirim data...";
+    formMessage.className =
+     "mt-6 text-center text-base font-semibold text-blue-400";
+
+    // Open WhatsApp in new tab/window
+    window.open(waUrl, "_blank");
+
+    // Reset form and UI after short delay
+    setTimeout(() => {
+     formMessage.textContent =
+      "Data telah dikirim ke WhatsApp Admin. Silakan lanjutkan pembayaran.";
+     formMessage.className =
+      "mt-6 text-center text-base font-semibold text-green-400";
+     form.reset();
+     paymentInfoDiv.textContent = "";
+     paymentImageContainer.innerHTML = "";
+     paymentNumberInput.readOnly = false;
+     topupFormSection.classList.add("hidden");
+     gamesSection.classList.remove("hidden");
+     gamesSection.scrollIntoView({ behavior: "smooth" });
+    }, 2000);
+   });
+
+   // Hide all main sections except games on load
+   function hideAllMainSections() {
+    diamondSection.classList.add("hidden");
+    topupFormSection.classList.add("hidden");
+    caraBayarSection.classList.add("hidden");
+    kontakSection.classList.add("hidden");
+    gamesSection.classList.add("hidden");
+   }
+
+   // Show only games section
+   function showGamesSection() {
+    hideAllMainSections();
+    gamesSection.classList.remove("hidden");
+    gamesSection.scrollIntoView({ behavior: "smooth" });
+   }
+
+   // Show Cara Bayar section
+   function showCaraBayarSection() {
+    hideAllMainSections();
+    caraBayarSection.classList.remove("hidden");
+    caraBayarSection.scrollIntoView({ behavior: "smooth" });
+   }
+
+   // Show Kontak section
+   function showKontakSection() {
+    hideAllMainSections();
+    kontakSection.classList.remove("hidden");
+    kontakSection.scrollIntoView({ behavior: "smooth" });
+   }
+
+   // Menu Cara Bayar click handlers
+   const menuCaraBayar = document.getElementById("menu-cara-bayar");
+   const menuCaraBayarMobile = document.getElementById("menu-cara-bayar-mobile");
+
+   if (menuCaraBayar) {
+    menuCaraBayar.addEventListener("click", (e) => {
+     e.preventDefault();
+     showCaraBayarSection();
+    });
+   }
+   if (menuCaraBayarMobile) {
+    menuCaraBayarMobile.addEventListener("click", (e) => {
+     e.preventDefault();
+     mobileMenu.classList.add("hidden");
+     showCaraBayarSection();
+    });
+   }
+
+   // Menu Kontak click handlers (optional)
+   const menuKontakLinks = document.querySelectorAll('a[href="#kontak"]');
+   menuKontakLinks.forEach((link) => {
+    link.addEventListener("click", (e) => {
+     e.preventDefault();
+     if (mobileMenu && !mobileMenu.classList.contains("hidden")) {
+      mobileMenu.classList.add("hidden");
+     }
+     showKontakSection();
+    });
+   });
+
+   // Menu Game click handlers (optional)
+   const menuGameLinks = document.querySelectorAll('a[href="#games"]');
+   menuGameLinks.forEach((link) => {
+    link.addEventListener("click", (e) => {
+     e.preventDefault();
+     if (mobileMenu && !mobileMenu.classList.contains("hidden")) {
+      mobileMenu.classList.add("hidden");
+     }
+     showGamesSection();
+    });
+   });
+
+   // On initial load, show games section only
+   document.addEventListener("DOMContentLoaded", () => {
+    showGamesSection();
+   });
+
+   // Slider functionality
+   const sliderWrapper = document.getElementById("slider-wrapper");
+   const sliderDots = document.querySelectorAll(".slider-dot");
+   let currentSlide = 0;
+   const totalSlides = sliderDots.length;
+
+   function goToSlide(index) {
+    sliderWrapper.style.transform = `translateX(-${index * 100}%)`;
+    sliderDots.forEach((dot) => dot.classList.remove("active"));
+    sliderDots[index].classList.add("active");
+    currentSlide = index;
+   }
+
+   sliderDots.forEach((dot) => {
+    dot.addEventListener("click", () => {
+     goToSlide(parseInt(dot.dataset.index));
+    });
+   });
+
+   // Auto slide every 5 seconds
+   setInterval(() => {
+    let nextSlide = (currentSlide + 1) % totalSlides;
+    goToSlide(nextSlide);
+   }, 5000);
+
+   // Testimonial slider logic with image enlarge on click
+   const testimonialItems = document.querySelectorAll(".testimonial-item");
+   let selectedTestimonialIndex = 0;
+
+   function selectTestimonial(index) {
+    testimonialItems.forEach((item, i) => {
+     if (i === index) {
+      item.classList.add("selected");
+      item.setAttribute("aria-current", "true");
+      // Scroll into view smoothly
+      item.scrollIntoView({ behavior: "smooth", inline: "center" });
+     } else {
+      item.classList.remove("selected");
+      item.removeAttribute("aria-current");
+     }
+    });
+    selectedTestimonialIndex = index;
+   }
+
+   testimonialItems.forEach((item, index) => {
+    item.addEventListener("click", () => {
+     selectTestimonial(index);
+    });
+    item.addEventListener("keydown", (e) => {
+     if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      selectTestimonial(index);
+     }
+    });
+   });
+
+   // Initialize first testimonial as selected
+   document.addEventListener("DOMContentLoaded", () => {
+    selectTestimonial(0);
+   });
+  </script>
+ </body>
+</html>
